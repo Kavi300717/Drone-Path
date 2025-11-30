@@ -1,0 +1,363 @@
+/* Background drone animation */
+.bg-drone-anim {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+/* Make the background drone big, bold, and centered */
+/* Multiple big drones, each with unique position, size, and animation */
+.bg-drone-svg.big-drone {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.13;
+    filter: blur(0.5px) drop-shadow(0 16px 64px #ff4bcd44);
+}
+
+.bg-drone-svg.drone1 {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    animation: bg-drone-float 8s ease-in-out infinite alternate;
+}
+
+.bg-drone-svg.drone2 {
+    left: 10%;
+    top: 20%;
+    animation: bg-drone-float2 10s ease-in-out infinite alternate;
+    opacity: 0.09;
+}
+
+.bg-drone-svg.drone3 {
+    left: 80%;
+    top: 30%;
+    animation: bg-drone-float3 12s ease-in-out infinite alternate;
+    opacity: 0.11;
+}
+
+.bg-drone-svg.drone4 {
+    left: 20%;
+    top: 70%;
+    animation: bg-drone-float4 9s ease-in-out infinite alternate;
+    opacity: 0.08;
+}
+
+.bg-drone-svg.drone5 {
+    left: 75%;
+    top: 80%;
+    animation: bg-drone-float5 11s ease-in-out infinite alternate;
+    opacity: 0.10;
+}
+
+@keyframes bg-drone-float2 {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-30px) scale(1.04) rotate(8deg);
+    }
+}
+
+@keyframes bg-drone-float3 {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-40px) scale(1.02) rotate(-6deg);
+    }
+}
+
+@keyframes bg-drone-float4 {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-20px) scale(1.03) rotate(12deg);
+    }
+}
+
+@keyframes bg-drone-float5 {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-35px) scale(1.01) rotate(-10deg);
+    }
+}
+
+@keyframes bg-drone-float {
+    0% {
+        transform: translateY(0) scale(1) rotate(-8deg);
+    }
+
+    50% {
+        transform: translateY(-32px) scale(1.04) rotate(8deg);
+    }
+
+    100% {
+        transform: translateY(0) scale(1) rotate(-8deg);
+    }
+}
+
+body.light .bg-drone-svg {
+    filter: blur(0.5px) drop-shadow(0 8px 32px #ff4bcd22);
+}
+
+/* Ensure main UI is above bg drone */
+#main-ui,
+#theme-toggle {
+    position: relative;
+    margin: 0;
+    z-index: 1;
+}
+
+.waypoint-icon .waypoint-dot {
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border: 3px solid #060305;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #06030588;
+    animation: waypoint-drop 0.5s cubic-bezier(.6, 1.5, .6, 1);
+}
+
+@keyframes waypoint-drop {
+    0% {
+        transform: scale(0) translateY(-40px);
+        opacity: 0;
+    }
+
+    70% {
+        transform: scale(1.2) translateY(8px);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.drone-icon .drone-emoji {
+    font-size: 2.2em;
+    filter: drop-shadow(var(--drone-shadow));
+    animation: drone-float 1.2s infinite alternate cubic-bezier(.6, 1.5, .6, 1), drone-takeoff 0.7s cubic-bezier(.6, 1.5, .6, 1);
+}
+
+@keyframes drone-takeoff {
+    0% {
+        transform: scale(0.5) translateY(40px) rotate(-20deg);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1.1) translateY(-10px) rotate(10deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.drone-icon.landing .drone-emoji {
+    animation: drone-landing 0.7s cubic-bezier(.6, 1.5, .6, 1);
+}
+
+@keyframes drone-landing {
+    0% {
+        transform: scale(1) translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(0.5) translateY(40px) rotate(-20deg);
+        opacity: 0;
+    }
+}
+
+.leaflet-interactive {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: path-draw 1.2s cubic-bezier(.6, 1.5, .6, 1) forwards;
+}
+
+@keyframes path-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+body {
+    --accent: #4bd2ff;
+    --bg-dark: #18181b;
+    --bg-light: #f7f7fa;
+    --text-dark: #f7f7fa;
+    --text-light: #18181b;
+    --card-bg: #23232b;
+    --card-bg-light: #fff;
+    --drone-shadow: 0 0 24px 8px #4bd5ff88;
+    font-family: 'Inter', 'Avenir', Helvetica, Arial, sans-serif;
+    margin: 0;
+    background: var(--bg-dark);
+    color: var(--text-dark);
+    transition: background 0.3s, color 0.3s;
+}
+
+body.light {
+    background: var(--bg-light);
+    color: var(--text-light);
+}
+
+#theme-toggle {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    z-index: 1000;
+}
+
+#toggle-theme {
+    background: var(--card-bg);
+    color: var(--accent);
+    border: none;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    box-shadow: 0 2px 8px #0002;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+body.light #toggle-theme {
+    background: var(--card-bg-light);
+    color: #4bf3ff;
+}
+
+#main-ui {
+    max-width: 700px;
+    margin: 3rem auto 0 auto;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 2rem;
+    box-shadow: 0 8px 32px #0003;
+    text-align: center;
+}
+
+body.light #main-ui {
+    background: var(--card-bg-light);
+    box-shadow: 0 8px 32px #4bd5ff22;
+}
+
+h1 {
+    font-size: 2.8em;
+    letter-spacing: -2px;
+    line-height: 1.1;
+    margin-bottom: 0.2em;
+    background: linear-gradient(90deg, #4bd2ff, #6a82fb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #aaa;
+    margin-bottom: 1.5em;
+}
+
+#map {
+    width: 100%;
+    height: 400px !important;
+    /* Added !important for testing */
+    border-radius: 1.5em;
+    margin-bottom: 1.5em;
+    box-shadow: 0 4px 24px #4bd2ff33;
+    border: 2px solid #4bd2ff44;
+    overflow: hidden;
+}
+
+#controls {
+    display: flex;
+    justify-content: center;
+    gap: 1.2em;
+    margin-bottom: 1.2em;
+}
+
+#controls button {
+    background: linear-gradient(90deg, #4bd2ff, #6a82fb);
+    color: #fff;
+    border: none;
+    border-radius: 1em;
+    padding: 0.7em 1.5em;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #0002;
+    transition: background 0.2s, transform 0.2s;
+}
+
+#controls button:hover {
+    background: linear-gradient(90deg, #6a82fb, #4bd2ff);
+    transform: scale(1.07) rotate(-2deg);
+}
+
+#stats {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.1em;
+    color: #4bd2ff;
+    margin-bottom: 0.5em;
+}
+
+@keyframes drone-float {
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateY(-12px) rotate(5deg);
+    }
+}
+
+@media (max-width: 800px) {
+    #main-ui {
+        padding: 1rem;
+    }
+
+    #map {
+        height: 250px;
+    }
+}
+
+#app {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: #213547;
+        background-color: #ffffff;
+    }
+
+    a:hover {
+        color: #747bff;
+    }
+
+    button {
+        background-color: #f9f9f9;
+    }
+}

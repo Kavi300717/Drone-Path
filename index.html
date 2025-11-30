@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DronePath - Plan & Simulate Drone Flights</title>
+  <link rel="stylesheet" href="src/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+
+<body>
+  <div class="bg-drone-anim">
+    <svg class="bg-drone-svg big-drone drone1" viewBox="0 0 256 256" width="600" height="600">
+      <g>
+        <ellipse cx="128" cy="230" rx="70" ry="18" fill="#0002" />
+        <g class="drone-body">
+          <rect x="70" y="110" width="116" height="36" rx="18" fill="#ff4bcd" />
+          <circle cx="90" cy="128" r="18" fill="#fff" />
+          <circle cx="166" cy="128" r="18" fill="#fff" />
+          <rect x="120" y="80" width="16" height="48" rx="8" fill="#6a82fb" />
+        </g>
+        <g class="drone-props">
+          <rect x="30" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="186" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="120" y="30" width="8" height="40" rx="4" fill="#6a82fb" />
+          <rect x="120" y="186" width="8" height="40" rx="4" fill="#6a82fb" />
+        </g>
+        <g class="drone-detail">
+          <circle cx="128" cy="128" r="10" fill="#fff" />
+          <circle cx="128" cy="128" r="5" fill="#ff4bcd" />
+        </g>
+      </g>
+    </svg>
+    <svg class="bg-drone-svg big-drone drone2" viewBox="0 0 256 256" width="400" height="400">
+      <g>
+        <ellipse cx="128" cy="230" rx="70" ry="18" fill="#0002" />
+        <g class="drone-body">
+          <rect x="70" y="110" width="116" height="36" rx="18" fill="#ff4bcd" />
+          <circle cx="90" cy="128" r="18" fill="#fff" />
+          <circle cx="166" cy="128" r="18" fill="#fff" />
+          <rect x="120" y="80" width="16" height="48" rx="8" fill="#6a82fb" />
+        </g>
+        <g class="drone-props">
+          <rect x="30" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="186" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="120" y="30" width="8" height="40" rx="4" fill="#6a82fb" />
+          <rect x="120" y="186" width="8" height="40" rx="4" fill="#6a82fb" />
+        </g>
+        <g class="drone-detail">
+          <circle cx="128" cy="128" r="10" fill="#fff" />
+          <circle cx="128" cy="128" r="5" fill="#ff4bcd" />
+        </g>
+      </g>
+    </svg>
+    <svg class="bg-drone-svg big-drone drone3" viewBox="0 0 256 256" width="300" height="300">
+      <g>
+        <ellipse cx="128" cy="230" rx="70" ry="18" fill="#0002" />
+        <g class="drone-body">
+          <rect x="70" y="110" width="116" height="36" rx="18" fill="#ff4bcd" />
+          <circle cx="90" cy="128" r="18" fill="#fff" />
+          <circle cx="166" cy="128" r="18" fill="#fff" />
+          <rect x="120" y="80" width="16" height="48" rx="8" fill="#6a82fb" />
+        </g>
+        <g class="drone-props">
+          <rect x="30" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="186" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="120" y="30" width="8" height="40" rx="4" fill="#6a82fb" />
+          <rect x="120" y="186" width="8" height="40" rx="4" fill="#6a82fb" />
+        </g>
+        <g class="drone-detail">
+          <circle cx="128" cy="128" r="10" fill="#fff" />
+          <circle cx="128" cy="128" r="5" fill="#ff4bcd" />
+        </g>
+      </g>
+    </svg>
+    <svg class="bg-drone-svg big-drone drone4" viewBox="0 0 256 256" width="500" height="500">
+      <g>
+        <ellipse cx="128" cy="230" rx="70" ry="18" fill="#0002" />
+        <g class="drone-body">
+          <rect x="70" y="110" width="116" height="36" rx="18" fill="#ff4bcd" />
+          <circle cx="90" cy="128" r="18" fill="#fff" />
+          <circle cx="166" cy="128" r="18" fill="#fff" />
+          <rect x="120" y="80" width="16" height="48" rx="8" fill="#6a82fb" />
+        </g>
+        <g class="drone-props">
+          <rect x="30" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="186" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="120" y="30" width="8" height="40" rx="4" fill="#6a82fb" />
+          <rect x="120" y="186" width="8" height="40" rx="4" fill="#6a82fb" />
+        </g>
+        <g class="drone-detail">
+          <circle cx="128" cy="128" r="10" fill="#fff" />
+          <circle cx="128" cy="128" r="5" fill="#ff4bcd" />
+        </g>
+      </g>
+    </svg>
+    <svg class="bg-drone-svg big-drone drone5" viewBox="0 0 256 256" width="350" height="350">
+      <g>
+        <ellipse cx="128" cy="230" rx="70" ry="18" fill="#0002" />
+        <g class="drone-body">
+          <rect x="70" y="110" width="116" height="36" rx="18" fill="#ff4bcd" />
+          <circle cx="90" cy="128" r="18" fill="#fff" />
+          <circle cx="166" cy="128" r="18" fill="#fff" />
+          <rect x="120" y="80" width="16" height="48" rx="8" fill="#6a82fb" />
+        </g>
+        <g class="drone-props">
+          <rect x="30" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="186" y="120" width="40" height="8" rx="4" fill="#6a82fb" />
+          <rect x="120" y="30" width="8" height="40" rx="4" fill="#6a82fb" />
+          <rect x="120" y="186" width="8" height="40" rx="4" fill="#6a82fb" />
+        </g>
+        <g class="drone-detail">
+          <circle cx="128" cy="128" r="10" fill="#fff" />
+          <circle cx="128" cy="128" r="5" fill="#ff4bcd" />
+        </g>
+      </g>
+    </svg>
+  </div>
+  <!-- SVG content for each drone (identical, for visual density) -->
+  <!-- Use the same SVG as before for each, but style/position with CSS -->
+  <div id="theme-toggle">
+    <button id="toggle-theme">🌙</button>
+  </div>
+  <main id="main-ui">
+    <h1>🚁 DronePath</h1>
+    <p class="subtitle">Plan & Simulate Drone Flight Paths</p>
+    <div id="map"></div>
+    <div id="controls">
+      <button id="start-sim">▶Simulate</button>
+      <button id="export-json"> Export JSON</button>
+      <button id="clear-path"> Clear</button>
+    </div>
+    <div id="stats">
+      <span id="distance">Distance: 0 m</span>
+      <span id="eta">ETA: 0 s</span>
+      <span id="altitude">Altitude: 0 m</span>
+    </div>
+  </main>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="src/DronePath.js"></script>
+</body>
+
+</html>
